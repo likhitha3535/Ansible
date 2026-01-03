@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: install
+    apt: name=*** state=present
+    with_items:
+    - git
+    - apache2
+    - tree
+
