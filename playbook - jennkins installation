@@ -1,0 +1,32 @@
+ cat 1-jenkins.yaml
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: install java
+    apt:
+      update_cache: yes
+      name: openjdk-21-jre
+  - name: Add jenkins key
+    apt_key:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+      state: present
+  - name: Add jenkins repo
+    apt_repository:
+      repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
+      state: present
+  - name: Install jenkins
+    apt:
+      name: jenkins
+      state: present
+  - name: start jenkins
+    service:
+      name: jenkins
+      state: started
+  - name: Enable jenkins
+    service:
+      name: jenkins
+      enabled: yes
+  - name: cat the initial admins password file
+    shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+    register: initial_admin_password
