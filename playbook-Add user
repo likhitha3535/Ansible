@@ -1,11 +1,17 @@
-**************************************************
+ansible@ansible-controller:~$ cat user.yaml
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: create user
+    user:
+      name: "{{item}}"
+      create_home: yes
+    with_items:
+    - liikhitha
+    - hanu
+# if u want to run 
+#ansible-playbook -i inv user.yaml --syntax-check
+#ansible-playbook -i inv user.yaml --check
+#ansible-playbook -i inv user.yaml 
 
-ansible@ansible-controller:~$ ansible-playbook -i inv user.yaml
-[WARNING]: Could not match supplied host pattern, ignoring: al
-
-PLAY [al] **********************************************************************
-skipping: no hosts matched
-
-PLAY RECAP *********************************************************************
-
-ansible@ansible-controller:~$
