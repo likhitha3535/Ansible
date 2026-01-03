@@ -1,0 +1,11 @@
+**************************************************
+
+ansible@ansible-controller:~$ ansible-playbook -i inv user.yaml
+[WARNING]: Could not match supplied host pattern, ignoring: al
+
+PLAY [al] **********************************************************************
+skipping: no hosts matched
+
+PLAY RECAP *********************************************************************
+
+ansible@ansible-controller:~$
