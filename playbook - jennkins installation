@@ -30,3 +30,7 @@
   - name: cat the initial admins password file
     shell: cat /var/lib/jenkins/secrets/initialAdminPassword
     register: initial_admin_password
+ - name: Display the content in initial admin ppassword
+    debug:
+      var: initial_admin_password
+
